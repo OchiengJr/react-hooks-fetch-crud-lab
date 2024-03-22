@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 
-function QuestionItem({ question, onDelete, onUpdateCorrectAsw }) {
+function QuestionItem({ question, onDelete, onUpdateCorrectAnswer }) {
   const { id, prompt, answers, correctIndex } = question;
-  const [selectedCorrectIndex, setSelectedCorrectIndex] = useState(
-    correctIndex
-  );
+  const [selectedCorrectIndex, setSelectedCorrectIndex] = useState(correctIndex);
 
   const options = answers.map((answer, index) => (
     <option key={index} value={index}>
@@ -13,7 +11,7 @@ function QuestionItem({ question, onDelete, onUpdateCorrectAsw }) {
   ));
 
   const handleUpdateAnswer = () => {
-    onUpdateCorrectAsw(id, selectedCorrectIndex);
+    onUpdateCorrectAnswer(id, selectedCorrectIndex);
   };
 
   const handleCorrectIndexChange = (event) => {
@@ -25,21 +23,25 @@ function QuestionItem({ question, onDelete, onUpdateCorrectAsw }) {
   };
 
   return (
-    <li>
-      <h4>Question {id}</h4>
-      <h5>Prompt: {prompt}</h5>
-      <label>
-        Correct Answer:
-        <select
-          defaultValue={selectedCorrectIndex}
-          onChange={handleCorrectIndexChange}
-        >
-          {options}
-        </select>
-      </label>
-      <button onClick={handleDelete}>Delete Question</button>
-      <button onClick={handleUpdateAnswer}>Update Answer</button>
-    </li>
+    <div className="question-item">
+      <h3>Question {id}</h3>
+      <div className="question-prompt">{prompt}</div>
+      <div className="answer-selection">
+        <label>
+          Correct Answer:
+          <select
+            value={selectedCorrectIndex}
+            onChange={handleCorrectIndexChange}
+          >
+            {options}
+          </select>
+        </label>
+      </div>
+      <div className="action-buttons">
+        <button className="delete-button" onClick={handleDelete}>Delete Question</button>
+        <button className="update-button" onClick={handleUpdateAnswer}>Update Answer</button>
+      </div>
+    </div>
   );
 }
 

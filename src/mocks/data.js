@@ -1,14 +1,14 @@
 export const data = [
   {
     id: 1,
-    prompt: "lorem testum 1",
-    answers: ["choice 1", "choice 2", "choice 3", "choice 4"],
+    prompt: "Lorem ipsum dolor sit amet?",
+    answers: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
     correctIndex: 0,
   },
   {
     id: 2,
-    prompt: "lorem testum 2",
-    answers: ["choice 1", "choice 2", "choice 3", "choice 4"],
-    correctIndex: 2,
+    prompt: "What is the capital of France?",
+    answers: ["Paris", "London", "Berlin", "Rome"],
+    correctIndex: 0,
   },
 ];
